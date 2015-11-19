@@ -3,6 +3,7 @@
 module.exports = function(app,model){
 
     app.post("/api/assignment/user", function(req,res){
+        console.log("server/service called")
         res.json(model.Create(req.body));
     });
 
