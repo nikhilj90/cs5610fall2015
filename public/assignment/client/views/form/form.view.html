@@ -1,0 +1,54 @@
+<div class="container" ng-controller="FormController">
+    <h2 id="pagetitle">Forms</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#forms">Forms</a></li>
+        <li><a data-toggle="tab">Fields</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="forms" class="tab-pane fade in active">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        <button class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </button>
+                        Form Name
+                    </th>
+                    <th>
+                        <button class="btn">
+                            <scan class="glyphicon glyphicon-triangle-bottom"></scan>
+                        </button>
+                        Action
+                    </th>
+                </tr>
+                <tr>
+                    <td><input ng-model="formName" class="form-control" type="text" name="name" placeholder="name"/></td>
+                    <td>
+                        <button ng-click="addForm()" type="button" class="btn btn-primary">
+                            <scan class="glyphicon glyphicon-plus"></scan>
+                        </button>
+                        <button ng-click="updateForm(selectedFormId, index)" type="button" class="btn btn-success">
+                            <scan class="glyphicon glyphicon-ok"></scan>
+                        </button>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="form in forms | orderBy:predicate:reverse">
+                        <td><a ng-click="navigate($index)">{{form.title}}</a></td>
+                        <td>
+                            <button ng-click="deleteForm(form.id)" class="btn btn-danger">
+                                <scan class="glyphicon glyphicon-remove"></scan>
+                            </button>
+                            <button ng-click="selectForm($index)" class="btn btn-info">
+                                <scan class="glyphicon glyphicon-pencil"></scan>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
