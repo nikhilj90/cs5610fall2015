@@ -26,9 +26,9 @@
             };
 
             UserService.updateUser(user, user.id)
-                .then(function(updatedUser){
-                    $scope.user = updatedUser;
-                    $rootScope.user = updatedUser;
+                .then(function(updateUser){
+                    $scope.user = updateUser;
+                    $rootScope.user = updateUser;
                     $scope.success = "User Profile updated successfully.";
                 })
                 .catch(function(error){
