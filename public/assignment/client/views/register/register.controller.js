@@ -17,14 +17,16 @@
                         password: $scope.password,
                         email: $scope.email
                     };
-                    UserService.createUser(newUser)
-                        .then(function(newUser) {
+                    UserService.createUser(newUser, function(user){
                             //update rootscope user
-                            $rootScope.user = newUser;
+
 
                             //Navigate to profile
-                            $location.path("/profile");
-                        });
+
+                        })
+                   console.log("New user created");
+                   $rootScope.user = newUser;
+                   $location.path("/profile");
                 }
             }
         }
