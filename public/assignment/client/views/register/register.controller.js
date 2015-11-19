@@ -18,9 +18,9 @@
                         email: $scope.email
                     };
                     UserService.createUser(newUser)
-                        .then(function(newlyCreatedUser) {
+                        .then(function(newUser) {
                             //update rootscope user
-                            $rootScope.user = newlyCreatedUser;
+                            $rootScope.user = newUser;
 
                             //Navigate to profile
                             $location.path("/profile");
