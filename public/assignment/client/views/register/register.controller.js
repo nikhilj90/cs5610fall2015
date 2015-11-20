@@ -10,7 +10,7 @@
         function register() {
             if($scope.username, $scope.password, $scope.verifyPassword, $scope.email) {
                 if ($scope.password !== $scope.verifyPassword){
-                    $scope.error = "Both passowrd fields don't match fields should match";
+                    $scope.error = "Both the password and verify password fields should match";
                 } else {
                     var newUser = {
                         username: $scope.username,
@@ -19,7 +19,10 @@
                     };
                     UserService.createUser(newUser)
                         .then(function(newlyCreatedUser) {
+                            //update rootscope user
                             $rootScope.user = newlyCreatedUser;
+
+                            //Navigate to profile
                             $location.path("/profile");
                         });
                 }

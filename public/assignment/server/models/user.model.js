@@ -27,7 +27,6 @@ module.exports = function(app){
     function Create(user){
         user.id = guid();
         //console.log(user);
-        console.log("server/ model called")
         users.push(user);
         return user;
     }
