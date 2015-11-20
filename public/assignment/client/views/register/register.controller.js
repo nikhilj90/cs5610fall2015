@@ -10,23 +10,18 @@
         function register() {
             if($scope.username, $scope.password, $scope.verifyPassword, $scope.email) {
                 if ($scope.password !== $scope.verifyPassword){
-                    $scope.error = "Both the password and verify password fields should match";
+                    $scope.error = "Both passowrd fields don't match fields should match";
                 } else {
                     var newUser = {
                         username: $scope.username,
                         password: $scope.password,
                         email: $scope.email
                     };
-                    UserService.createUser(newUser, function(user){
-                            //update rootscope user
-
-
-                            //Navigate to profile
-
-                        })
-                   console.log("New user created");
-                   $rootScope.user = newUser;
-                   $location.path("/profile");
+                    UserService.createUser(newUser)
+                        .then(function(newlyCreatedUser) {
+                            $rootScope.user = newlyCreatedUser;
+                            $location.path("/profile");
+                        });
                 }
             }
         }
