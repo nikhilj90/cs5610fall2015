@@ -20,8 +20,8 @@
             var defer = $q.defer();
             var url = "/api/assignment/form/" + formId + "/field";
             $http.post(url, field)
-                .success(function(response){
-                    defer.resolve(response);
+                .success(function(updatedForm){
+                    defer.resolve(updatedForm.fields);
                 });
             return defer.promise;
         }
@@ -49,8 +49,8 @@
             var defer = $q.defer();
             var url = "/api/assignment/form/" + formId + "/field/" + fieldId;
             $http.delete(url)
-                .success(function(response){
-                    defer.resolve(response);
+                .success(function(updatedForm){
+                    defer.resolve(updatedForm.fields);
                 });
             return defer.promise;
         }
@@ -59,8 +59,8 @@
             var defer = $q.defer();
             var url = "/api/assignment/form/" + formId + "/field/" + fieldId;
             $http.put(url,field)
-                .success(function(response){
-                    defer.resolve(response);
+                .success(function(updatedForm){
+                    defer.resolve(updatedForm.fields);
                 });
             return defer.promise;
         }
