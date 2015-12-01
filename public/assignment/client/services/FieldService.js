@@ -39,8 +39,8 @@
             var defer = $q.defer();
             var url = "/api/assignment/form/" + formId + "/field/" + fieldId;
             $http.get(url)
-                .success(function(response){
-                    defer.resolve(response);
+                .success(function(field){
+                    defer.resolve(field);
                 });
             return defer.promise;
         }

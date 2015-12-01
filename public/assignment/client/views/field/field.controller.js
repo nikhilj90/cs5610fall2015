@@ -12,11 +12,11 @@
 
         $scope.fieldsOption = [
             { name: "Single Line Text Field", id: 0 },
-            { name: "Multi Line Text Field", id: 1},
-            { name: "Date Field", id: 2},
-            { name: "Dropdown Field", id: 3},
+            { name: "Multi Line Text Field", id: 1 },
+            { name: "Date Field", id: 2 },
+            { name: "Dropdown Field", id: 3 },
             { name: "CheckBoxes Field", id: 4 },
-            { name: "Radio Buttons Field", id: 5}
+            { name: "Radio Buttons Field", id: 5 }
         ];
 
         FieldService.getFieldsForForm(formId)
@@ -31,23 +31,23 @@
         $scope.reorderField = reorderField;
 
         function addField(modelType) {
-            var textField = {"id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
-            var textAreaField = {"id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
-            var dateField = {"id": null, "label": "New Date Field", "type": "DATE"};
+            var textField = {"label": "New Text Field", "fieldType": "TEXT", "placeholder": "New Field"};
+            var textAreaField = {"label": "New Text Field", "fieldType": "TEXTAREA", "placeholder": "New Field"};
+            var dateField = {"label": "New Date Field", "fieldType": "DATE"};
 
-            var dropDownField = {"id": null, "label": "New Dropdown", "type": "OPTIONS", "options": [
+            var dropDownField = {"label": "New Dropdown", "fieldType": "OPTIONS", "options": [
                 {"label": "Option 1", "value": "OPTION_1"},
                 {"label": "Option 2", "value": "OPTION_2"},
                 {"label": "Option 3", "value": "OPTION_3"}
             ]};
 
-            var checkBoxField = {"id": null, "label": "New Checkboxes", "type": "CHECKBOXES", "options": [
+            var checkBoxField = {"label": "New Checkboxes", "fieldType": "CHECKBOXES", "options": [
                 {"label": "Option A", "value": "OPTION_A"},
                 {"label": "Option B", "value": "OPTION_B"},
                 {"label": "Option C", "value": "OPTION_C"}
             ]};
 
-            var radioBoxField = {"id": null, "label": "New Radio Buttons", "type": "RADIOS", "options": [
+            var radioBoxField = {"label": "New Radio Buttons", "fieldType": "RADIOS", "options": [
                 {"label": "Option X", "value": "OPTION_X"},
                 {"label": "Option Y", "value": "OPTION_Y"},
                 {"label": "Option Z", "value": "OPTION_Z"}
@@ -69,28 +69,47 @@
             }
 
             console.log(field);
-            FieldService.createFieldForForm(formId, field)
-                .then(function(fields){
-                    $scope.fields = fields;
-                });
+           if(!(typeof field === "undefined")) {
+                FieldService.createFieldForForm(formId, field)
+                    .then(function(fields) {
+                        $scope.fields = fields;
+                    });
+            }
         }
 
         function removeField(field){
-            FieldService.deleteFieldFromForm(formId, field.id)
+            FieldService.deleteFieldFromForm(formId, field._id)
                 .then(function(fields){
                     $scope.fields = fields;
                 });
         }
 
         function clone(field){
-            FieldService.cloneField(formId, field)
-                .then(function(fields){
-                    $scope.fields = fields;
-                });
+             FieldService.updateField(formId, field._id, field)
+               .then(function(fields) {
+                   $scope.fields = fields;
+               });
+              var fieldType = field.fieldType;
+           var modelType;
+            if(fieldType === "TEXT"){
+                modelType = "Single Line Text Field";
+            } else if(fieldType === "TEXTAREA"){
+                modelType = "Multi Line Text Field";
+            } else if(fieldType === "DATE"){
+                modelType = "Date Field";
+            } else if(fieldType === "OPTIONS"){
+                modelType = "Dropdown Field";
+            } else if(fieldType === "CHECKBOXES"){
+                modelType = "CheckBoxes Field";
+            } else if(fieldType === "RADIOS"){
+                modelType = "Radio Buttons Field";
+            }
+            addField(modelType);
+
         }
 
         function editField(field) {
-            //FieldService.updateField(formId, field.id, field)
+            //FieldService.updateField(formId, field._id, field)
             //    .then(function(fields) {
             //        $scope.fields = fields;
             //    });

@@ -9,11 +9,7 @@
 
         $scope.username = $rootScope.user.username;
         $scope.password = $rootScope.user.password;
-        $scope.email = $rootScope.user.email;
-        $scope.firstName = $rootScope.user.firstName;
-        $scope.lastName = $rootScope.user.lastName;
-
-        console.log($rootScope.user);
+        $scope.email = $rootScope.user.email;        
 
         $scope.update = function () {
             var user = {
@@ -22,7 +18,7 @@
                 email: $scope.email,
                 firstName: $scope.firstName,
                 lastName: $scope.lastName,
-                id: $rootScope.user.id
+                id: $rootScope.user._id
             };
 
             UserService.updateUser(user, user.id)

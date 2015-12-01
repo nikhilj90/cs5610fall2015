@@ -42,7 +42,6 @@
         function findUserById(userId) {
             var defer = $q.defer();
             var url = "/api/assignment/user/" + userId;
-            console.log(url);
             $http.get(url)
                 .success(function(response){
                     defer.resolve(response);
