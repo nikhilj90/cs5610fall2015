@@ -1,4 +1,3 @@
-"use strict";
 (function(){
     angular
         .module("FormBuilderApp")
@@ -6,40 +5,31 @@
 
     function Configure($routeProvider) {
         $routeProvider
-            .when("/", {
-                redirectTo : "/home"
+            .when("/admin", {
+                templateUrl: "admin/admin.view.html",
+                controller: "AdminController"
+            })
+            .when("/forms", {
+                templateUrl: "form/form.view.html",
+                controller: "FormController"
             })
             .when("/home",{
-                templateUrl: "views/home/home.view.html"
+                templateUrl: "home/home.view.html"
             })
             .when("/login", {
-                templateUrl: "views/login/login.view.html",
-                //controller: "LoginController"
-            })
-            .when("/register", {
-                templateUrl: "views/register/register.view.html",
-                //controller: "RegisterController"
+                templateUrl: "login/login.view.html",
+                controller: "LoginController"
             })
             .when("/profile", {
-                templateUrl: "views/profile/profile.view.html",
-                //controller: "ProfileController"
+                templateUrl: "profile/profile.view.html",
+                controller: "ProfileController"
             })
-            .when("/form", {
-                templateUrl: "views/form/form.view.html",
-                //controller: "FormController"
-            })
-            .when("/admin", {
-                templateUrl: "views/admin/admin.view.html",
-                //controller: "AdminController"
-            })
-            //.when("/user", {
-            //    templateUrl : "/assignment/client/field/field.view.html"
-            //})
-            .when("/user/:userId/form/:formId/fields", {
-                templateUrl: "views/field/field.view.html",
+            .when("/register", {
+                templateUrl: "register/register.view.html",
+                controller: "RegisterController"
             })
             .otherwise({
-                redirectTo : "/"
-            })
+                redirectTo: "/home"
+            });
     }
 })();

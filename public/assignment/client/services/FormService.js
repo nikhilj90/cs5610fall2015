@@ -7,8 +7,10 @@
         var service = {
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
+
             findFormById: findFormById,
             findFormByTitle: findFormByTitle,
+
             deleteFormById: deleteFormById,
             updateFormById: updateFormById
         };
@@ -28,6 +30,7 @@
         function findAllFormsForUser(userId) {
             var defer = $q.defer();
             var url = "/api/assignment/user/" + userId + "/form";
+            console.log(url);
             $http.get(url)
                 .success(function(response){
                     defer.resolve(response);

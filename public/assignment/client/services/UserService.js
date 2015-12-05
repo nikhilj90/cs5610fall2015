@@ -13,8 +13,7 @@
             createUser: createUser,
             deleteUserById: deleteUserById,
             updateUser: updateUser
-        }
-
+        };
         return service;
 
         function findUserByUsername(userName) {
@@ -42,6 +41,7 @@
         function findUserById(userId) {
             var defer = $q.defer();
             var url = "/api/assignment/user/" + userId;
+            console.log(url);
             $http.get(url)
                 .success(function(response){
                     defer.resolve(response);
@@ -62,14 +62,13 @@
         function createUser(user){
             var defer = $q.defer();
             var url = '/api/assignment/user';
-            console.log("I am here")
+            //console.log(user);
             $http.post(url, user)
                 .success(function(response){
                     defer.resolve(response);
                 });
             return defer.promise;
         }
-
 
         function deleteUserById(userId) {
             var defer = $q.defer();
@@ -85,7 +84,6 @@
         function updateUser(user, userId) {
             var defer = $q.defer();
             var url = '/api/assignment/user/'+ userId;
-            console.log(url);
             $http.put(url, user)
                 .success(function(response){
                     defer.resolve(response);

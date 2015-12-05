@@ -1,10 +1,10 @@
 "use strict";
 (function () {
-    angular.module("FormBuilderApp")
+    angular
+        .module("FormBuilderApp")
         .controller("FormController", FormController);
 
     function FormController($scope, FormService, $rootScope, $location) {
-        // console.log($rootScope.user);
         FormService.findAllFormsForUser($rootScope.user._id)
             .then(function (forms) {
                 $scope.forms = forms;
@@ -17,10 +17,10 @@
         $scope.navigate = navigate;
 
         function addForm() {
-            //console.log($scope.formName);
             var form = {
                 title: $scope.formName
             };
+
             //console.log(angular.isUndefined($scope.formName));
             if(!angular.isUndefined($scope.formName) && $scope.formName != ""){
                 FormService.createFormForUser($rootScope.user._id, form)
@@ -35,8 +35,9 @@
         }
 
         function deleteForm(formId) {
+            console.log(formId);
             FormService.deleteFormById(formId)
-                .then(function (forms) {
+                .then(function(forms) {
                     FormService.findAllFormsForUser($rootScope.user._id)
                         .then(function (forms) {
                             $scope.forms = forms;
@@ -45,7 +46,6 @@
         }
 
         function selectForm(index) {
-            //console.log(index);
             $scope.selectedFormId = $scope.forms[index]._id;
             $scope.formName = $scope.forms[index].title;
             $scope.index = index;
@@ -53,9 +53,8 @@
 
         function updateForm(selectedFormId, index) {
             if (!angular.isUndefined(index)) {
-                //console.log(index);
                 if (!angular.isUndefined($scope.formName) && $scope.formName != "") {
-                    // var formToBeUpdated = $scope.forms[index];
+                    //var formToBeUpdated = $scope.forms[index];
                     var newForm = {
                         title: $scope.formName,
                         userId: $rootScope.user._id

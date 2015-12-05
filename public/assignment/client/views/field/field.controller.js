@@ -3,7 +3,8 @@
  */
 "use strict";
 (function () {
-    angular.module("FormBuilderApp")
+    angular
+        .module("FormBuilderApp")
         .controller("FieldController", FieldController);
 
     function FieldController($scope, FieldService, $rootScope, $location, $routeParams) {
@@ -69,7 +70,7 @@
             }
 
             console.log(field);
-           if(!(typeof field === "undefined")) {
+            if(!(typeof field === "undefined")) {
                 FieldService.createFieldForForm(formId, field)
                     .then(function(fields) {
                         $scope.fields = fields;
@@ -85,12 +86,8 @@
         }
 
         function clone(field){
-             FieldService.updateField(formId, field._id, field)
-               .then(function(fields) {
-                   $scope.fields = fields;
-               });
-              var fieldType = field.fieldType;
-           var modelType;
+            var fieldType = field.fieldType;
+            var modelType;
             if(fieldType === "TEXT"){
                 modelType = "Single Line Text Field";
             } else if(fieldType === "TEXTAREA"){
@@ -104,8 +101,12 @@
             } else if(fieldType === "RADIOS"){
                 modelType = "Radio Buttons Field";
             }
-            addField(modelType);
 
+            addField(modelType);
+            //FieldService.cloneField(formId, field)
+            //    .then(function(fields){
+            //        $scope.fields = fields;
+            //    });
         }
 
         function editField(field) {

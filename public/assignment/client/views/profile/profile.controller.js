@@ -9,7 +9,7 @@
 
         $scope.username = $rootScope.user.username;
         $scope.password = $rootScope.user.password;
-        $scope.email = $rootScope.user.email;        
+        $scope.email = $rootScope.user.email;
 
         $scope.update = function () {
             var user = {

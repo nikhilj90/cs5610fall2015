@@ -19,6 +19,7 @@
         function createFieldForForm(formId, field){
             var defer = $q.defer();
             var url = "/api/assignment/form/" + formId + "/field";
+            console.log(url);
             $http.post(url, field)
                 .success(function(updatedForm){
                     defer.resolve(updatedForm.fields);
@@ -29,9 +30,10 @@
         function getFieldsForForm(formId){
             var defer = $q.defer();
             var url = "/api/assignment/form/" + formId + "/field";
-            $http.get(url).success(function(response){
-                defer.resolve(response);
-            });
+            $http.get(url)
+                .success(function(response){
+                    defer.resolve(response);
+                });
             return defer.promise;
         }
 
@@ -68,7 +70,7 @@
         function cloneField(formId, field){
             var defer = $q.defer();
             var url = "/api/assignment/form/" + formId + "/field";
-            $http.post(url,field)
+            $http.post(url, field)
                 .success(function(response){
                     defer.resolve(response);
                 });
