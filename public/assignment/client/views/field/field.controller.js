@@ -6,7 +6,6 @@
 	function fieldController($routeParams, FieldService) {
 		
 		var model = this;
-		
 		var formId = $routeParams.formId;
 		
 		FieldService.getFieldsForForm(formId).then(populateFields);
