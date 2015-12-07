@@ -37,7 +37,6 @@
 			var url = "/api/assignment/form/" + formId + "/field/" + fieldId;
 			return $http.put(url, field);
 		}
-		
 		return api;
 	}
 		
