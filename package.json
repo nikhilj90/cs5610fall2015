@@ -23,7 +23,9 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
+    "bluebird": "^3.0.6",
     "body-parser": "^1.14.1",
+    "bower": "^1.7.0",
     "express": "~3.4.4",
     "guid": "0.0.12",
     "mongoose": "^4.2.8",
