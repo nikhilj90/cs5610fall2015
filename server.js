@@ -26,6 +26,7 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", initializeApp);
 
 // initialize app once db is connected
+
 function initializeApp(callback) {
 	console.log("db connection open!");
 	app(appServer, mongoose);
