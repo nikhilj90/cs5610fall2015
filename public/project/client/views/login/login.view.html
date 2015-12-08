@@ -1,25 +1,23 @@
-<h2>Login</h2>
-
-<form class="form-horizontal">
-  
-  <div class="form-group">
-    <label for="inputUserName" class="col-sm-3 col-md-2 control-label label-align-left">Username</label>
-    <div class="col-sm-12 col-md-9">
-      <input type="text" class="form-control" id="inputUserName" placeholder="Username" ng-model="model.username">
+<div class="main page-offset">
+    <div class="form-panel col-xs-11 col-sm-6 col-md-4 col-centered">
+        <h3>Login</h3>
+        <div ng-if="loginerror" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <span>{{ loginErrorMessage }}</span>
+        </div>
+        <div class="form-holder">
+            <form action="">
+                <div class="form-group">
+                    <label for="username">User Name</label>
+                    <input ng-model="userName" type="text" class="form-control" id="username" placeholder="username"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input ng-model="password" type="password" class="form-control" id="password" placeholder="password"/>
+                </div>
+                <a class="btn btn-custom" role="button" ng-click="login()">Login</a>
+            </form>
+        </div>
     </div>
-  </div>
-  
-  <div class="form-group">
-    <label for="inputPassword" class="col-sm-3 col-md-2 control-label label-align-left">Password</label>
-    <div class="col-sm-12 col-md-9">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="model.password">
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-sm-10 col-sm-offset-2">
-      <button type="submit" class="btn btn-primary" ng-click="model.login()">Login</button>
-    </div>
-  </div>
-  
-</form>
+</div>

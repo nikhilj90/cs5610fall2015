@@ -1,27 +1,44 @@
+
+"use strict";
 (function() {
-	"use strict"
-	
-	angular.module("FormBuilderApp").controller("ProfileController", profileController);
-	
-	function profileController($rootScope, $location, UserService) {
-		
-		var model = this;
-		
-		model.loggedInUser = $rootScope.user;
-		
-		model.update = function() {
-			UserService.updateUser(model.loggedInUser._id, model.loggedInUser).then(updateUser);
-		}
-		
-		function updateUser(response) {
-			var users = response.data;
-			var userId = model.loggedInUser._id;
-			var updatedUser = users.find(function(currentUser, index, array) {
-				return currentUser._id == userId;
-			});
-			$rootScope.user = updatedUser;
-			$location.url("/profile");
-		}
-	}
-	
+    angular
+        .module("MarsApp")
+        .controller("ProfileController", ProfileController);
+
+    function ProfileController(UserService,$rootScope) {
+        var model = this;
+        model.update = update;
+        var loginuser=$rootScope.currentUser;
+
+        //model.username = $rootScope.curusername;
+        //model.password = $rootScope.curpwd;
+        //model.email = $rootScope.curemail;
+        //model.firstname = $rootScope.firstname;
+        //model.lastname = $rootScope.lastname;
+        model.username = loginuser.username;
+        model.password = loginuser.password;
+        model.email = loginuser.email;
+        model.firstname = loginuser.firstname;
+        model.lastname = loginuser.lastname;
+        function update(){
+            var userobj = {username: model.username, password: model.password, id: loginuser._id,
+                email: model.email, firstname: model.firstname, lastname: model.lastname};
+
+            UserService.Update(loginuser._id, userobj)
+                .then(function(user){
+                    if(user != null) {
+                        console.log("user : " + user);
+                        console.log("Updated username: " + user.username);
+                        $rootScope.currentUser=userobj;
+                        //$rootScope.curusername = user.username;
+                        //$rootScope.curpwd = user.password;
+                        //$rootScope.curid = user._id;
+                        //$rootScope.curemail = user.email;
+                        //$rootScope.firstname = user.firstName;
+                        //$rootScope.lastname = user.lastName;
+                        //$rootScope.currentUser=
+                    }
+                });
+        }
+    }
 })();

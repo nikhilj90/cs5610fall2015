@@ -1,42 +1,41 @@
-(function() {
-	"use strict"
-	
-	angular.module("FormBuilderApp").config(function($routeProvider) {
-		$routeProvider
-			.when("/home", {
-				templateUrl: "views/home/home.view.html"
-			})
-			.when("/profile", {
-				templateUrl: "views/profile/profile.view.html",
-				controller: "ProfileController",
-				controllerAs: "model"
-			})
-			.when("/admin", {
-				templateUrl: "views/admin/admin.view.html"
-			})
-			.when("/forms", {
-				templateUrl: "views/form/form.view.html",
-				controller: "FormController",
-				controllerAs: "model"
-			})
-			.when("/user/:userId/form/:formId/fields", {
-				templateUrl: "views/field/field.view.html",
-				controller: "FieldController",
-				controllerAs: "model"
-			})
-			.when("/register", {
-				templateUrl: "views/register/register.view.html",
-				controller: "RegisterController",
-				controllerAs: "model"
-			})
-			.when("/login", {
-				templateUrl: "views/login/login.view.html",
-				controller: "LoginController",
-				controllerAs: "model"
-			})
-			.otherwise({
-				redirectTo: "/home"
-			});
-	});
-	
+"use strict";
+
+(function () {
+    angular
+        .module("MarsApp")
+        .config(Config);
+
+    function Config($routeProvider) {
+        $routeProvider.when("/home", {
+            templateUrl: "views/home/home.view.html"
+        })
+        .when("/register", {
+            templateUrl: "views/register/register.view.html",
+            controller: "RegisterController",
+            controllerAs: "model"
+        })
+        .when("/login", {
+            templateUrl: "views/login/login.view.html",
+            controller: "LoginController",
+            controllerAs: "model"
+        })
+        .when("/profile", {
+            templateUrl: "views/profile/profile.view.html",
+            controller: "ProfileController",
+            controllerAs: "model"
+        })
+        .when("/search", {
+            templateUrl: "views/search/search.view.html",
+            controller: "SearchController",
+            controllerAs: "model"
+        })
+        .when("/result/:idIMDB", {
+            templateUrl: "views/result/result.view.html",
+            controller: "ResultController",
+            controllerAs: "model"
+        })
+        .otherwise({
+           redirectTo: "/home"
+        });
+    }
 })();

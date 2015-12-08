@@ -1,17 +1,11 @@
-var userService = require("./services/user.service.js");
-var formService = require("./services/form.service.js");
-var fieldService = require("./services/field.service.js");
-var userModel = require("./models/user.model.js");
-var formsModel = require("./models/form.model.js");
+"use strict";
+module.exports = function(app, mongoose, db, passport, localStrategy) {
+    var userModel = require('./models/user.model.server.js')(mongoose, db, localStrategy);
+    // var listingModel = require('./models/listing.model.server.js')(mongoose, db);
 
-module.exports = function(appServer, mongoose) {
-	
-	// initialize models
-	var UserModel = userModel(mongoose);
-	var FormModel = formsModel(mongoose);
-	
-	// initialize services
-	userService(appServer, UserModel);
-	formService(appServer, FormModel);
-	fieldService(appServer, FormModel);
-}
+
+    var userService = require('./services/user.service.server.js')(app, userModel);
+    // var listingService = require('./services/listing.service.server.js')(app, listingModel);
+    require('./services/search.service.server.js')(app);
+
+};

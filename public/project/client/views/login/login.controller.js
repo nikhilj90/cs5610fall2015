@@ -1,26 +1,36 @@
+"use strict";
 (function() {
-	"use strict"
-	
-	angular.module("FormBuilderApp").controller("LoginController", loginController);
-	
-	function loginController($rootScope, $location, UserService) {
-		
-		var model = this;
-		$rootScope.user = null;
-		
-		model.login = function() {
-			UserService.findUserByUsernameAndPassword(model.username, model.password).then(loginUser);
-		}
-		
-		function loginUser(response) {
-			var user = response.data;
-			if (user == null) {
-				return;
-			}
-			
-			$rootScope.user = user;
-			$location.url("/profile");
-		}
-	}	
-	
+    angular
+        .module("MarsApp")
+        .controller("LoginController", LoginController);
+
+    function LoginController($scope, $location, $rootScope, UserService) {
+        $scope.$location = $location;
+        $scope.login = login;
+        $scope.loginerror = false;
+
+
+        function login() {
+            var userName = $scope.userName;
+            var password = $scope.password;
+
+            if (!userName || !password) {
+                $scope.loginErrorMessage = "Please enter your username and password";
+                $scope.loginerror = true;
+            }
+
+            UserService.FindByAuth(userName, password).
+                then(function(user) {
+                    if (user) {
+                        $scope.user = user;
+                        $rootScope.currentUser = user;
+                        $rootScope.$broadcast('authenticate', user);
+                        $location.url("/home");
+                    } else {
+                        $scope.loginerror = true;
+                        $scope.loginErrorMessage = "Your login credentials did not match our records."
+                    }
+                });
+        }
+    }
 })();
