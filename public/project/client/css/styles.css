@@ -1,52 +1,10 @@
 
-.col-centered {
-    float: none;
-    margin: 0 auto;
-}
-
-.no-margin {
-    margin: 0;
-}
-
-.no-padding {
-    padding: 0;
-}
-
-.no-border td, .no-border tr {
-    border: none !important;
-}
-
-.panel {
-    border-radius: 0;
-    border: 0;
-}
-
-.panel-custom {
-    background-color: #ffffff;
-    height: 100%;
-}
-
-.page-offset {
-    padding-top: 30px;
-}
-
-.form-panel {
-    background-color: #ffffff;
-    padding: 30px;
-    font-family: 'Open Sans', sans-serif;
-    box-shadow: 0 2px 2px #eee;
-}
-
-.form-panel h3 {
-    font-family: 'Montserrat', sans-serif;
-    padding-bottom: 20px;
-}
 
 .btn-custom {
     border: 0;
     padding: 10px 15px;
     border-radius: 1px;
-    background-color: #A62B38;
+    background-color: black;
     color: #ffffff;
 }
 
@@ -64,42 +22,25 @@
     color: #8C8C8C;
 }
 
-.fire {
-    color: #D75814;
-}
-
-.car {
-    color: #1976D2;
-}
-
-.paw {
-    color: #000000;
-}
-
-.heartbeat {
-    color: #82000B;
-}
 
 .alert-custom {
     border-radius: 0;
 }
 
-/* Branding */
 .navbar-brand {
-    color: #A62B38;
-    font-family: Sans-serif;
+    color: #000000;
+    font-family: Courier New, Courier, monospace;
     font-size: 1.9em;
     font-weight: 900;
 }
 
-/* App Navigation */
+
 .navigation {
     background-color: #F7F7F7;
     height: 70px;
     padding-top: 10px;
     z-index: 100;
     box-shadow: 0 1px 0 #eeeeee;
-    /*F6F7F7*/
 }
 
 .nav-link {
@@ -117,7 +58,7 @@
 
 /* Footer */
 .footer {
-    background-color: #1f1f1f;
+    background-color: #AD000E;
     padding: 50px 0;
 }
 
@@ -141,7 +82,7 @@
     text-decoration: none;
 }
 
-/* Main view container */
+
 .main {
     margin-top: 70px;
     padding-bottom: 70px;
@@ -371,11 +312,11 @@
 .back-button {
     position: absolute;
     left: 40px;
-    color: #9E9E9E;
+    color: #000000;
 }
 
 .back-button:hover {
-    color: #9E9E9E;
+    color: #1f1f1f;
     font-size: 1.1em !important;
     transition: 0.2s font-size;
 }
@@ -429,13 +370,6 @@
     padding: 10px;
 }
 
-.property-info h4 {
-    font-family: 'Montserrat', sans-serif;
-    margin-left: 10px;
-    border-bottom: 3px solid #ffd935;
-    padding-bottom: 5px;
-    display: inline-block;
-}
 
 .places h4 {
     font-family: 'Montserrat', sans-serif;
@@ -445,18 +379,6 @@
     display: inline-block;
 }
 
-.location h4 {
-    font-family: 'Montserrat', sans-serif;
-    margin-left: 10px;
-    border-bottom: 3px solid #283593;
-    padding-bottom: 5px;
-    display: inline-block;
-}
-
-.price h2, .price h3 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-}
 
 .features {
     padding: 10px 15px;
@@ -491,7 +413,6 @@
     margin-top: 80px;
 }
 
-/* Responsive layout styles */
 @media screen and (max-width: 992px) {
     .property-address h2 {
         font-size: 1.8em;
@@ -562,4 +483,30 @@
     .location {
         height: 350px;
     }
+}
+
+.panel {
+    border-radius: 0;
+    border: 0;
+}
+
+.panel-custom {
+    background-color: green;
+    height: 100%;
+}
+
+.page-offset {
+    padding-top: 30px;
+}
+
+.form-panel {
+    background-color: #ffffff;
+    padding: 30px;
+    font-family: 'Open Sans', sans-serif;
+    box-shadow: 0 2px 2px #eee;
+}
+
+.form-panel h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-bottom: 20px;
 }
