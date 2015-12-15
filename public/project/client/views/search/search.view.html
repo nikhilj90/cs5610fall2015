@@ -20,18 +20,16 @@
 
 
     <div class="col-xs-11 col-md-9 col-centered">
-        <h4>Tweets</h4>
+        <h4>News</h4>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <!--<th>IMDB ID</th>-->
                     <th>User</th>
                     <th>Like</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="movie in model.response">
-                    <!--<td>{{movie.idIMDB}}</td>-->
                     <td>
                         <a href="#/result/{{movie.idIMDB}}">{{movie.title}}</a>
                     </td>
@@ -46,3 +44,4 @@
         </table>
     </div>
 </div>
+

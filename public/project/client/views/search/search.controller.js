@@ -15,29 +15,5 @@
                 model.response=response;
             });
         }
-
-        function like(movie){
-            SearchService.likes(movie);
-        }
-
-        //$scope.searchMovie=searchMovie;
-        //$scope.likeMovie=likeMovie;
-        //
-        //
-        //function searchMovie(title){
-        //    SearchService.searchMovieByTitle(title,function(response){
-        //        $scope.response=response;
-        //    });
-        //
-        //}
-        //
-        //function likeMovie(idIMDB){
-        //    SearchService.likeMovie(idIMDB,function(response){
-        //
-        //    });
-        //}
-
-
-
     }
 })();

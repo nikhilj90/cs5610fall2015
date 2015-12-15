@@ -34,6 +34,11 @@
             controller: "ResultController",
             controllerAs: "model"
         })
+        .when("/maps", {
+            templateUrl: "views/maps/maps.html",
+            controller: "MapsController",
+           
+        })
         .otherwise({
            redirectTo: "/home"
         });
