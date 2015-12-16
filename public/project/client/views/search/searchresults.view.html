@@ -1,0 +1,17 @@
+<div ng-controller="SearchController">
+	<table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="result in searchResults">
+                    <td>
+                        <a href={{result.url}} target="_blank">{{result.title}}</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</div>

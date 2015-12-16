@@ -29,6 +29,10 @@
             controller: "SearchController",
             controllerAs: "model"
         })
+        .when("/searchResults", {
+            templateUrl: "views/search/searchresults.view.html",
+            controller: "SearchController"
+        })
         .when("/result/:idIMDB", {
             templateUrl: "views/result/result.view.html",
             controller: "ResultController",
